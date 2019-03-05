@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Deportes{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('deportes.crear') }}">Crear</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for deporte in deportes %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ deporte['nombre'] }}</h1>
+        </div>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
